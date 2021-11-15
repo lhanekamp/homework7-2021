@@ -7,14 +7,15 @@
 </head>
 <body> 
 <main>
-	<h1>JavaScript Video Controls</h1>
 	
+
+	<h1>JavaScript Video Controls</h1>
 	<div class = "options">
-		<button  onclick="playVid()" id = "play">Play Video</button>
-		<button  onclick= "pauseVid()" id = "pause">Pause Video</button>
-		<button  onclick= "slowVid()" id = "slower">Slow Down</button>
-		<button  onclick= "speedVid()" id = "faster">Speed Up</button>
-		<button  onclick= "skipVid()" id = "skip">Skip Ahead</button>
+		<button  id = "play">Play Video</button>
+		<button  id = "pause">Pause Video</button>
+		<button  id = "slower">Slow Down</button>
+		<button  id = "faster">Speed Up</button>
+		<button  id = "skip">Skip Ahead</button>
 	</div>
 
 	<figure>
@@ -25,108 +26,22 @@
 			height="360" 
 			id="player1" 
 			preload="none"
-			src="assets/marchingband.mov" >
-		
-	
+			src="assets/marchingband.mov" />
 			  
 		    <track src="captions_en.vtt" kind="captions" srclang="en" label="english_captions">	
 		  		Your browser does not support HTML5 video.
 		</video>
 		<figcaption>[The Michigan Marching Band]</figcaption>
 		</figure> 
-	
-	<button onclick="muteVid()" id="mute">Mute</button><br>
+	<button id="mute">Mute</button><br>
 
 	<label for="slider">Volume</label>: 0 <input type="range" id="slider" min="0" max="100" value="100" step="10"> 100%<br>
 	<div>Volume is: <span id = "volume"> </span><br><br></div>
 
-	<button onclick="vintageClass()" id = "vintage">Old School</button>
-	<button onclick="origClass()" id = "orig">Original</button>
-	
-	<script> 
-		
-		var vol = 1
-		var speed = 1
-		var muted = false
-		function playVid() { 
-			var myVideo = document.querySelector("video"); 
-			myVideo.play() 
-			console.log("Play Video")
-			var volPerc = vol*(100)
-			document.getElementById("volume").innerHTML = volPerc + "%";
-		} 
-		function pauseVid() {
-			var myVideo = document.querySelector("video"); 
-			myVideo.pause(); 
-			console.log("Pause Video")
-		}
-		function slowVid() {
-			var myVideo = document.querySelector("video"); 
-			speed = speed * 0.95
-			slowVid.playbackRate = speed;
-			console.log("Now speed is " + speed)
-		} 
-		function speedVid() {
-			var myVideo = document.querySelector("video"); 
-			speed = speed / 0.95
-			speedVid.playbackRate = speed;
-			console.log("Now speed is " + speed)
-		} 
-		function skipVid() {
-			var myVideo = document.querySelector("video"); 
-			var currTime = myVideo.currentTime
-
-			var newTime = currTime + 15
-			if (newTime <= myVideo.duration) {
-				myVideo.currentTime = newTime;
-				console.log("Original location is " + currTime)
-				console.log("New location is " + newTime)
-			} else {
-				
-				console.log("Original location is " + currTime)
-				console.log("Going back to beginning")
-				console.log("New location 0")
-				myVideo.currentTime = 0
-			}			
-		} 
-		function muteVid() {
-			var myVideo = document.querySelector("video"); 
-			if (document.getElementById("mute").innerHTML == "Mute") {
-				myVideo.volume = 0
-				document.getElementById("mute").innerHTML = "Unmute"
-			} else {
-				myVideo.volume = vol
-				document.getElementById("mute").innerHTML = "Mute"
-			}
-		} 
-		var slid = document.getElementById("slider");
-		var output = document.getElementById("volume");
-
-
-		slid.onchange = function() {	
-			output.innerHTML = slid.value;
-			var myVideo = document.querySelector("video"); 
-			var tempVol = this.value / 100
-			vol = tempVol
-			myVideo.volume = vol
-			output.innerHTML =  this.value + "%";
-			console.log(myVideo.volume)
-		}
-
-		function vintageClass() {
-			document.querySelector("video").classList.add("oldSchool");
-		}
-
-		function origClass() {
-			document.querySelector("video").classList.remove("oldSchool");
-		}
-
-
-
-	</script>
+	<button id = "vintage">Old School</button>
+	<button id = "orig">Original</button>
+	<script src="js/video.js"></script>	
 	<p>Video courtesy of Allison Sweet.</p>
-
-	
 
 </main>
 </body> 

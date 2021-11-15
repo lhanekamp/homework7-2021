@@ -9,9 +9,8 @@ window.addEventListener("load", function() {
 // 	console.log("Play Video");
 // });
 		
-var vol = 1
-var speed = 1
-var muted = false
+var vol = 1;
+var speed = 1;
 
 document.querySelector("#play").addEventListener("click", playVid);
 document.querySelector("#pause").addEventListener("click", pauseVid);
@@ -28,54 +27,54 @@ document.querySelector("#orig").addEventListener("click", origClass);
 
 function playVid() { 
 	var myVideo = document.querySelector("video"); 
-	myVideo.play() 
-	console.log("Play Video")
-	var volPerc = vol*(100)
+	myVideo.play(); 
+	console.log("Play Video");
+	var volPerc = vol*(100);
 	document.getElementById("volume").innerHTML = volPerc + "%";
 } 
 
 		function pauseVid() {
 			var myVideo = document.querySelector("video"); 
 			myVideo.pause(); 
-			console.log("Pause Video")
+			console.log("Pause Video");
 		}
 		function slowVid() {
 			var myVideo = document.querySelector("video"); 
-			speed = speed * 0.95
-			slowVid.playbackRate = speed;
-			console.log("Now speed is " + speed)
+			speed = speed * 0.95;
+			myVideo.playbackRate = speed;
+			console.log("New speed is " + speed);
 		} 
 		function speedVid() {
 			var myVideo = document.querySelector("video"); 
-			speed = speed / 0.95
-			speedVid.playbackRate = speed;
-			console.log("Now speed is " + speed)
+			speed = speed / 0.95;
+			myVideo.playbackRate = speed;
+			console.log("New speed is " + speed);
 		} 
 		function skipVid() {
 			var myVideo = document.querySelector("video"); 
-			var currTime = myVideo.currentTime
+			var currTime = myVideo.currentTime;
 
 			var newTime = currTime + 15
 			if (newTime <= myVideo.duration) {
 				myVideo.currentTime = newTime;
-				console.log("Original location is " + currTime)
-				console.log("New location is " + newTime)
+				console.log("Original location " + currTime);
+				console.log("New location " + newTime);
 			} else {
 				
-				console.log("Original location is " + currTime)
-				console.log("Going back to beginning")
-				console.log("New location 0")
-				myVideo.currentTime = 0
+				console.log("Original location " + currTime)
+				console.log("Going back to beginning");
+				console.log("New location 0");
+				myVideo.currentTime = 0;
 			}			
 		} 
 		function muteVid() {
 			var myVideo = document.querySelector("video"); 
 			if (document.getElementById("mute").innerHTML == "Mute") {
-				myVideo.volume = 0
-				document.getElementById("mute").innerHTML = "Unmute"
+				myVideo.muted = true;
+				document.getElementById("mute").innerHTML = "Unmute";
 			} else {
-				myVideo.volume = vol
-				document.getElementById("mute").innerHTML = "Mute"
+				myVideo.muted = false;
+				document.getElementById("mute").innerHTML = "Mute";
 			}
 		} 
 		var slid = document.getElementById("slider");
@@ -85,11 +84,11 @@ function playVid() {
 		slid.onchange = function() {	
 			output.innerHTML = slid.value;
 			var myVideo = document.querySelector("video"); 
-			var tempVol = this.value / 100
-			vol = tempVol
-			myVideo.volume = vol
+			var tempVol = this.value / 100;
+			vol = tempVol;
+			myVideo.volume = vol;
 			output.innerHTML =  this.value + "%";
-			console.log(myVideo.volume)
+			console.log(myVideo.volume);
 		}
 
 		function vintageClass() {
@@ -99,7 +98,3 @@ function playVid() {
 		function origClass() {
 			document.querySelector("video").classList.remove("oldSchool");
 		}
-
-
-
-	

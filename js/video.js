@@ -52,20 +52,14 @@ function playVid() {
 		} 
 		function skipVid() {
 			var myVideo = document.querySelector("video"); 
-			var currTime = myVideo.currentTime;
+			console.log(myVideo.currentTime);
+			myVideo.currentTime += 15;
 
-			var newTime = currTime + 15
-			if (newTime <= myVideo.duration) {
-				myVideo.currentTime = newTime;
-				console.log("Original location " + currTime);
-				console.log("New location " + newTime);
-			} else {
-				
-				console.log("Original location " + currTime)
-				console.log("Going back to beginning");
-				console.log("New location 0");
+			if (myVideo.currentTime >= myVideo.duration) {
 				myVideo.currentTime = 0;
-			}			
+				console.log(myVideo.currentTime);
+			} 
+			
 		} 
 		function muteVid() {
 			var myVideo = document.querySelector("video"); 
@@ -98,3 +92,7 @@ function playVid() {
 		function origClass() {
 			document.querySelector("video").classList.remove("oldSchool");
 		}
+
+
+
+	
